@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+    div.row
+        div.col-sm-12
+            button.pull-right Add New User
+    div.row
+        div.col-sm-12
+            table(class='table table-bordered')
+                tr
+                    th First Name
+                    th Middle Name
+                    th Last Name
+                    th Action
+                tr
+                    +searchFieldTd('firstname','firstname')
+                    +searchFieldTd('middlename','middlename')
+                    +searchFieldTd('lastname','lastname')
+                    td
+                        button Search
+                        button Reset
+                each user in users
+                    +userrow(user)
+
+
+
+
+mixin userrow(user)
+    tr
+        td #{user.firstname}
+        td #{user.middlename}
+        td #{user.lastname}
+        td
+            button Delete
+
+mixin searchFieldTd(id,name)
+        td
+            input(type='text',id=id, name=name)
